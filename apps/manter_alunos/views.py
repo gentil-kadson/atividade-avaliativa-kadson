@@ -23,15 +23,17 @@ def criar_aluno(request):
 
 def editar_aluno(request, id_aluno):
     aluno = Aluno.objects.get(id=id_aluno)
-    aluno_form = AlunoForm(instance=aluno)
+    
 
     if request.method == 'POST':
-        aluno_form = AlunoForm(request.POST, instance=aluno_form)
+        aluno_form = AlunoForm(request.POST, instance=aluno)
 
         if aluno_form.is_valid():
             aluno_form.save()
 
             return HttpResponseRedirect('/')
+    else:
+        aluno_form = AlunoForm(instance=aluno)
     
     context = { 'form': aluno_form }
     return render(request, 'salvar_aluno.html', context)
