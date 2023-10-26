@@ -9,7 +9,7 @@
 
 <body>
     <main>
-        <button>Novo Cadastro</button>
+        <a href="{% url 'criar_aluno' %}"><button>Novo Cadastro</button></a>
         <table>
             <thead>
                 <tr>
@@ -22,7 +22,19 @@
                 </tr>
             </thead>
             <tbody>
-
+                {% for aluno in alunos %}
+                <tr>
+                    <td>{{ aluno.nome }}</td>
+                    <td>{{ aluno.idade }}</td>
+                    <td>{{ aluno.email }}</td>
+                    <td>{{ aluno.cidade }}</td>
+                    <td>{{ aluno.curso }}</td>
+                    <td>
+                        <a href="{% url 'editar_aluno' aluno.id %}"><button>Editar</button></a>
+                        <a href="{% url 'excluir_aluno' aluno.id %}"><button>Excluir</button></a>
+                    </td>
+                </tr>
+                {% endfor %}
             </tbody>
         </table>
     </main>

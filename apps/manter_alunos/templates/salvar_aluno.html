@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salvar Aluno</title>
+</head>
+
+<body>
+    <main>
+        <h1>Salvar Aluno</h1>
+        <h2>Preencha os dados abaixo:</h2>
+        <section>
+            <form action="" method="POST">
+                {% csrf_token %}
+                {% for field in form %}
+                <div class="form-group">
+                    {{ field.label_tag }} {{ field }}
+                </div>
+                {% endfor %}
+                <input type="submit" value="Salvar Aluno">
+            </form>
+        </section>
+    </main>
+</body>
+
+</html>
